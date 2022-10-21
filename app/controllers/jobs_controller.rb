@@ -8,7 +8,8 @@ class JobsController < ApplicationController
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
     else
       @jobs = Job.all.order("created_at desc")
-    end    
+    end   
+     @jobs = Job.page(params[:page]).order("created_at desc")   
   end
 
  
