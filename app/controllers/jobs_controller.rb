@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     if(params.has_key?(:job_type)) 
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
     elsif((jobs_path(job_type: "Full-time").nil?) || (jobs_path(job_type: "Part-time").nil?) ||jobs_path(job_type: "Freelance").nil? )
-         flash[:alert] = "User not found."
+      flash[:alert] = "User not found"
     else
       @jobs = Job.all.order("created_at desc")
     end    
