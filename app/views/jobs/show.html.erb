@@ -1,19 +1,19 @@
  <div class="columns pt4 pb7"> 
   <div class="column is-7 is-offset-1">
 
-    <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p> %
-    <h1 class="title is-2"><%= @job.title %></h1>
+    <b><p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p> </b>
+    <h1 class="title is-2">Job title : <%=  @job.title %></h1>
 
     <ul class="list pb4">
       <li class="inline-block f6 pr2"><%= job_type(@job.job_type) %></li>
-      <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
+      <li class="inline-block f6 ph2"><i class="fa fa-pin"></i><b>Location : <%= @job.location %></b></li>
       <% if @job.remoke_ok? %>
         <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
       <% end %>
     </ul>
 
     <div class="content text-serif f4">
-      <%= @job.description.html_safe %>
+      <p></p><b>Job-description :</b> <%= @job.description.html_safe %></li>
     </div>
 
    
