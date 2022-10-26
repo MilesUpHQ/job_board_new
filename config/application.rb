@@ -9,9 +9,10 @@ Bundler.require(*Rails.groups)
 module JobBoard1
   class Application < Rails::Application
     config.active_job.queue_adapter = :sidekiq
-    config.application_name = 'Job Board1'
+    config.application_name = 'Job Board'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.exceptions_app = self.routes 
 
     # Configuration for the application, engines, and railties goes here.
     #
