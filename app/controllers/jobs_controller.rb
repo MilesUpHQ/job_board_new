@@ -1,19 +1,23 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy  ]
   before_action :authenticate_user!, except:[:index, :show]
- 
+  
   def index
     @jobs = Job.all.order("created_at desc")
-    if(params.has_key?(:job_type))
+    if(params.has_key?(:job_type)) 
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+    elsif((jobs_path(job_type: "Full-time").nil?) || (jobs_path(job_type: "Part-time").nil?) ||jobs_path(job_type: "Freelance").nil? )
+         flash[:alert] = "User not found."
     else
       @jobs = Job.all.order("created_at desc")
-    end   
-     @jobs = Job.page(params[:page]).order("created_at desc")   
+    end    
   end
 
  
-
+  
+  # def index
+  #   redirect_to apply_path
+  # end  
 
 
   def new
