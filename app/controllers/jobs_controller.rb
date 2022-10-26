@@ -13,10 +13,7 @@ class JobsController < ApplicationController
   end
 
  
-  
-  # def index
-  #   redirect_to apply_path
-  # end  
+
 
 
   def new
