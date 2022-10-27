@@ -15,7 +15,7 @@ service postgresql start
 <h2>Migrate-Database</h2>
 
 <b>rails db:{drop,migrate,seed}</b>
-
+8. go to git checkout final branch for final deployment app for testing bugs
 
 <h2>Run Server</h2>
 <b>rails s</b>
