@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except:[:index, :show]
+  before_action :check_user_job, only: %i[ edit update destroy ]
 
   def index
     @jobs = Job.all.order("created_at desc")
@@ -17,9 +18,6 @@ class JobsController < ApplicationController
 
 
   def edit
-    unless @job.user_id == current_user.id
-      redirect_to root_path and return
-    end
   end
 
   def show
@@ -41,10 +39,6 @@ class JobsController < ApplicationController
 
 
   def update
-    unless @job.user_id == current_user.id
-      redirect_to root_path and return
-    end
-
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
@@ -57,9 +51,6 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    unless @job.user_id == current_user.id
-      redirect_to root_path and return
-    end
     @job.destroy
 
     respond_to do |format|
