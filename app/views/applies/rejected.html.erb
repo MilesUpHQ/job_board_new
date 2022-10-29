@@ -8,7 +8,7 @@
 
   <%= link_to apply.resume, rails_blob_path(apply.resume, disposition: "attachment") %>
 
-  <%= link_to 'View', apply, class: 'button is-small is-link is-outlined' %>
+  <%= link_to 'View', job_apply_path(@job, apply), class: 'button is-small is-link is-outlined' %>
 
 
 

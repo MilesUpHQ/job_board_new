@@ -1,7 +1,7 @@
  <div class="columns pt4 pb7">
   <div class="column is-7 is-offset-1">
 
-    <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p> %
+    <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
     <h1 class="title is-2"><%= @job.title %></h1>
 
     <ul class="list pb4">
@@ -34,7 +34,7 @@
     <% end %>
     </div>
 
-    <%= link_to 'Apply to this job', new_apply_path, class:"button is-rounded is-fullwidth is-link" %>
+    <%= link_to 'Apply to this job', new_job_apply_path(@job), class:"button is-rounded is-fullwidth is-link" %>
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>

@@ -35,7 +35,7 @@
             <li class="inline-block">
               <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
             <li class="inline-block">
-              <%= link_to 'View-to-apply-job',applies_path , class: 'button is-small is-link is-outlined' %></li>
+              <%= link_to 'View-to-apply-job', job_applies_path(job), class: 'button is-small is-link is-outlined' %></li>
 
           </ul>
         <% end %>
