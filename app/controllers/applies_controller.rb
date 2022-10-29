@@ -1,49 +1,57 @@
 class AppliesController < ApplicationController
-    
+
         def index
          @applies = Apply.all
-        end  
+        end
         def new
           @apply =Apply.new
-        end 
+        end
         def create
           Apply.create(apply_params)
           if @apply.nil?
-            redirect_to jobs_path,flash: {notice: "JOB IS APPLIED SUCCESSFULLY"} 
-         end 
-        end  
+            redirect_to jobs_path,flash: {notice: "JOB IS APPLIED SUCCESSFULLY"}
+         end
+        end
         def show
             @apply =  Apply.find(params[:id])
-        end 
-        
+        end
+
+        def accepted
+          @applies = Apply.filter_by_accept
+        end
+
+        def rejected
+          @applies = Apply.filter_by_reject
+        end
+
         def reject
-          
           @apply = Apply.find(params[:id])
-          @apply.status = "Rejected"
-          @apply.save
+          @apply.status = "reject"
+          if @apply.save
+            redirect_to applies_path and return
+          end
           respond_to do |format|
             format.html { redirect_to applies_path, notice: "The application is rejected" }
             format.json { head :no_content }
           end
         end
 
-        def accept 
-        
+        def accept
           @apply = Apply.find(params[:id])
-          @apply.status = "Accepted"
-          puts "############# \n ############# \n"
-          @apply.save
-          puts "############# \n ############# \n"
+          @apply.status = "accept"
+          if @apply.save
+            redirect_to applies_path and return
+          end
           respond_to do |format|
             format.html { redirect_to applies_path, notice: "application is accepted" }
             format.json { head :no_content }
-          end  
-        end    
+          end
+        end
 
         private
         def apply_params
           params.require(:apply).permit(:name, :phonenumber,:address,:email,:resume, :status)
         end
-     
-      
+
+
 end

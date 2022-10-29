@@ -1,8 +1,4 @@
-
-<%= link_to 'Accepted Jobs', accepted_path, class: 'button is-small is-link is-outlined' %></li>
-<%= link_to 'Rejected Jobs', rejected_path, class: 'button is-small is-link is-outlined' %></li>
-
-<h1>applied job</h1>
+<h1>Rejected Jobs</h1>
 
 <% @applies.each do |apply| %>
   <h3><%= apply.name %></h3>

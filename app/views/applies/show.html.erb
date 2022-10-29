@@ -1,3 +1,6 @@
-<%= link_to 'reject', @apply, action: :reject, method: :post, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
-  <%= link_to 'accept',@apply, action: :accept, method: :get,  class: 'button is-small is-link is-outlined' %></li>
-         
+  <h3><%= @apply.name %></h3>
+  <h3><%= @apply.phonenumber%></h3>
+  <h3><%= @apply.email%></h3>
+
+  <%= link_to 'reject', reject_path, method: :post, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+  <%= link_to 'accept', accept_path, method: :post, class: 'button is-small is-link is-outlined' %></li>
