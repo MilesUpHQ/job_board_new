@@ -1,37 +1,32 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[ show edit update destroy  ]
+  before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except:[:index, :show]
- 
+
   def index
     @jobs = Job.all.order("created_at desc")
     if(params.has_key?(:job_type))
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
     else
       @jobs = Job.all.order("created_at desc")
-    end    
+    end
   end
-
- 
-  
-  # def index
-  #   redirect_to apply_path
-  # end  
-
 
   def new
-    @job = current_user.jobs.build
+    @job = current_user.jobs.new
   end
 
- 
+
   def edit
+    unless @job.user_id == current_user.id
+      redirect_to root_path and return
+    end
   end
- 
+
   def show
-    # @apply =  Apply.find(params[:id])
-  end  
+  end
 
   def create
-    @job = current_user.jobs.build(job_params)
+    @job = current_user.jobs.new(job_params)
 
     respond_to do |format|
       if @job.save
@@ -46,6 +41,10 @@ class JobsController < ApplicationController
 
 
   def update
+    unless @job.user_id == current_user.id
+      redirect_to root_path and return
+    end
+
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
@@ -58,6 +57,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
+    unless @job.user_id == current_user.id
+      redirect_to root_path and return
+    end
     @job.destroy
 
     respond_to do |format|
@@ -67,13 +69,12 @@ class JobsController < ApplicationController
   end
 
   private
-   
-    def set_job
-      @job = Job.find(params[:id])
-    end
 
-  
     def job_params
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remoke_ok, :apply_url, :avatar)
+    end
+
+    def set_job
+      @job = Job.find(params[:id])
     end
 end

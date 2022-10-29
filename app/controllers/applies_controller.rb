@@ -1,15 +1,13 @@
 class AppliesController < ApplicationController
+  before_action :set_job
 
   def index
-    @job = Job.find(params[:job_id])
-    # puts "\n\n\n ################## \n\n\n #{@job.inspect} \n current_user id : #{current_user.id} \n ############ \n\n\n"
     unless @job.user_id == current_user.id
       redirect_to root_path and return
     end
   end
 
   def new
-    @job = Job.find(params[:job_id])
     unless @job.user_id == current_user.id
       redirect_to root_path and return
     end
@@ -17,7 +15,6 @@ class AppliesController < ApplicationController
   end
 
     def create
-      @job = Job.find(params[:job_id])
       unless @job.user_id == current_user.id
         redirect_to root_path and return
       end
@@ -28,7 +25,6 @@ class AppliesController < ApplicationController
     end
 
     def show
-      @job = Job.find(params[:job_id])
       unless @job.user_id == current_user.id
         redirect_to root_path and return
       end
@@ -36,7 +32,6 @@ class AppliesController < ApplicationController
     end
 
     def accepted
-      @job = Job.find(params[:job_id])
       unless @job.user_id == current_user.id
         redirect_to root_path and return
       end
@@ -44,7 +39,6 @@ class AppliesController < ApplicationController
     end
 
     def rejected
-      @job = Job.find(params[:job_id])
       unless @job.user_id == current_user.id
         redirect_to root_path and return
       end
@@ -52,7 +46,6 @@ class AppliesController < ApplicationController
     end
 
     def reject
-      @job = Job.find(params[:job_id])
       unless @job.user_id == current_user.id
         redirect_to root_path and return
       end
@@ -68,7 +61,6 @@ class AppliesController < ApplicationController
     end
 
     def accept
-      @job = Job.find(params[:job_id])
       unless @job.user_id == current_user.id
         redirect_to root_path and return
       end
@@ -87,5 +79,9 @@ class AppliesController < ApplicationController
 
     def apply_params
       params.require(:apply).permit(:name, :phonenumber,:address,:email,:resume, :status)
+    end
+
+    def set_job
+      @job = Job.find(params[:job_id])
     end
 end
