@@ -1,4 +1,6 @@
 class Apply < ApplicationRecord
+    belongs_to :job
+
     has_one_attached :resume
     validates :resume, presence:true
 
