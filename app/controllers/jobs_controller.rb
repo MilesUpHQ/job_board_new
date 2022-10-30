@@ -4,11 +4,10 @@ class JobsController < ApplicationController
   before_action :check_user_job, only: %i[ edit update destroy ]
 
   def index
-    @jobs = Job.all.order("created_at desc")
     if(params.has_key?(:job_type))
-      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc").page(params[:page]).per(2)
     else
-      @jobs = Job.all.order("created_at desc")
+      @jobs = Job.all.order("created_at desc").page(params[:page]).per(2)
     end
   end
 
