@@ -13,7 +13,7 @@
     <span class="font-weight-bold small text-uppercase">Part Time</span></a>
   <% end %>
 
-  <%# <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"> %>
+  <%# <a class="nav-link mb-3 p-3 shadow" id="v-pills-messages-tab" data-toggle="pill" href="<%= jobs_path(job_type: "Freelance") %><%# " role="tab" aria-controls="v-pills-messages" aria-selected="false"> %>
   <%= link_to jobs_path(job_type: "Freelance"), class: "nav-link mb-3 p-3 shadow", id: "v-pills-home-tab", role: "tab" do %>
     <i class="fa fa-star mr-2"></i>
     <span class="font-weight-bold small text-uppercase">Freelance</span></a>
