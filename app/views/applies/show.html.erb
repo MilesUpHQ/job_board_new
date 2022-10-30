@@ -2,5 +2,5 @@
   <h3><%= @apply.phonenumber%></h3>
   <h3><%= @apply.email%></h3>
 
-  <%= link_to 'reject', reject_path, method: :post, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+  <%= link_to 'reject', reject_path, method: :post, data: { confirm: 'Are you sure you want reject?' }, class: 'button is-small is-link is-outlined' %></li>
   <%= link_to 'accept', accept_path, method: :post, class: 'button is-small is-link is-outlined' %></li>

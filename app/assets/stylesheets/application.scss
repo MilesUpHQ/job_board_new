@@ -25,3 +25,24 @@
   width: 50px;
   height: 50px;
 }
+
+
+.nav-pills-custom .nav-link {
+  color: #aaa;
+  background: #fff;
+  position: relative;
+}
+
+.nav-pills-custom .nav-link::active {
+  color: #45b649;
+  background: #fff;
+}
+
+.nav-pills-custom .nav-link.active::before {
+  opacity: 1;
+}
+
+.nav-pills-custom .nav-link.active {
+  color: #45b649;
+  background: #fff;
+}

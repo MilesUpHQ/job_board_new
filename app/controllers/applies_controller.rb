@@ -1,6 +1,6 @@
 class AppliesController < ApplicationController
   before_action :set_job
-  before_action :check_user_job
+  # before_action :check_user_job, except: %i[ new create ]
   before_action :set_apply, only: %i[ show accept reject ]
 
   def index
@@ -31,22 +31,20 @@ class AppliesController < ApplicationController
     def reject
       @apply.status = "reject"
       if @apply.save
-        redirect_to job_applies_path and return
-      end
-      respond_to do |format|
-        format.html { redirect_to job_applies_path, notice: "The application is rejected" }
-        format.json { head :no_content }
+        respond_to do |format|
+          format.html { redirect_to job_applies_path, notice: "The application is rejected" }
+          format.json { head :no_content }
+        end
       end
     end
 
     def accept
       @apply.status = "accept"
       if @apply.save
-        redirect_to job_applies_path and return
-      end
-      respond_to do |format|
-        format.html { redirect_to job_applies_path, notice: "The application is accepted" }
-        format.json { head :no_content }
+        respond_to do |format|
+          format.html { redirect_to job_applies_path, notice: "The application is accepted" }
+          format.json { head :no_content }
+        end
       end
     end
 
