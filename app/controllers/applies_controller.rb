@@ -1,5 +1,6 @@
 class AppliesController < ApplicationController
   before_action :set_job
+  before_action :authenticate_user!, only:[:index, :new, :show]
   # before_action :check_user_job, except: %i[ new create ]
   before_action :set_apply, only: %i[ show accept reject ]
 
