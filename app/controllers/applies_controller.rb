@@ -15,6 +15,8 @@ class AppliesController < ApplicationController
       @apply = @job.applies.new(apply_params)
       if @apply.save
         redirect_to jobs_path,flash: {notice: "JOB IS APPLIED SUCCESSFULLY"}
+      else 
+        render 'new'
       end
     end
 
