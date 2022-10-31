@@ -4,6 +4,7 @@ class Apply < ApplicationRecord
     has_one_attached :resume
 
     validates :phonenumber, presence: true, length: {is:10}
+    validates :email, presence: true
     validates :resume, presence:true
     validate :document_type
 
