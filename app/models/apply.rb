@@ -2,6 +2,8 @@ class Apply < ApplicationRecord
     belongs_to :job
 
     has_one_attached :resume
+
+    validates :phonenumber, presence: true, length: {is:10}
     validates :resume, presence:true
     validate :document_type
 
