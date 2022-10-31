@@ -1,13 +1,3 @@
 <h1>Accepted Jobs</h1>
+<%= render 'apply_display' %>
 
-<% @applies.each do |apply| %>
-  <h3><%= apply.name %></h3>
-  <%# <p><%= apply.address</p> %>
-  <h3><%= apply.phonenumber%></h3>
-  <h3><%= apply.email%></h3>
-
-  <%= link_to apply.resume, rails_blob_path(apply.resume, disposition: "attachment") %>
-
-  <%= link_to 'View', job_apply_path(@job, apply), class: 'button is-small is-link is-outlined' %>
-
-<% end %>
