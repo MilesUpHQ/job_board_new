@@ -2,7 +2,7 @@
 
 
      <%= simple_form_for @job, html: { multipart: true } do |f| %>
-  <%= f.error_notification %>
+      <%= f.error_notification %>
 
       <div class="field">
         <div class="control">
@@ -53,18 +53,14 @@
       </div>
     </div>
 
-      <div class="field">
-        <div class="control">
-          <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
-        </div>
-      </div>
+     
 
 
     <div class="columns">
       <div class="field column">
 
         <div class="control">
-          <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+          <%= f.input :company_name, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
         </div>
       </div>
 
@@ -92,6 +88,52 @@
         <output id="list"></output>
       </div>
     </div>
+
+    <div class="field">
+        <div class="control">
+          <%= f.input :experience, required: true, input_html: { class: "textfield" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+     <div class="field">
+        <div class="control">
+          <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+    <div class="field">
+        <div class="control">
+          <%= f.input :responsibility, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.input :qualification, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= f.input :technical_skill, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.input :about_company, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.input :perks, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.input :founder, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+
+      
 
    <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
 <% end %>
