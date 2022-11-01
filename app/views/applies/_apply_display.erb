@@ -1,21 +1,9 @@
-
-<%= link_to 'Accepted Jobs', accepted_path, class: 'button is-small is-link is-outlined' %></li>
-<%= link_to 'Rejected Jobs', rejected_path, class: 'button is-small is-link is-outlined' %></li>
-
-
-<h1>Applied Job</h1>
-<br>
-<% @job.applies.each do |apply| %>
+<% @applies.each do |apply| %>
   <h4>Name:<%= apply.name %></h4>
   <%# <p><%= apply.address</p> %>
   <h4>Phone Number:<%= apply.phonenumber%></h4>
   <h4>Email:<%= apply.email%></h4>
-
   <h4>Resume:<%= link_to "Download", rails_blob_path(apply.resume, disposition: "attachment") %></h4>
-
   <%= link_to 'View', job_apply_path(@job, apply), class: 'button is-small is-link is-outlined' %>
-  <br>
-
-
 
 <% end %>

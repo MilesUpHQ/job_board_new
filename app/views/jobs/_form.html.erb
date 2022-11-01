@@ -1,5 +1,5 @@
 
-            
+
 
      <%= simple_form_for @job, html: { multipart: true } do |f| %>
   <%= f.error_notification %>
@@ -62,7 +62,7 @@
 
     <div class="columns">
       <div class="field column">
-          
+
         <div class="control">
           <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
         </div>
@@ -94,4 +94,4 @@
     </div>
 
    <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
-<% end %> 
+<% end %>

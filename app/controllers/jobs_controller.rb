@@ -1,37 +1,29 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[ show edit update destroy  ]
+  before_action :set_job, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except:[:index, :show]
- 
+  before_action :check_user_job, only: %i[ edit update destroy ]
+
   def index
-    @jobs = Job.all.order("created_at desc")
     if(params.has_key?(:job_type))
-      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc").page(params[:page]).per(2)
     else
-      @jobs = Job.all.order("created_at desc")
-    end    
+      @jobs = Job.all.order("created_at desc").page(params[:page]).per(2)
+    end
   end
-
- 
-  
-  # def index
-  #   redirect_to apply_path
-  # end  
-
 
   def new
-    @job = current_user.jobs.build
+    @job = current_user.jobs.new
   end
 
- 
+
   def edit
   end
- 
+
   def show
-    # @apply =  Apply.find(params[:id])
-  end  
+  end
 
   def create
-    @job = current_user.jobs.build(job_params)
+    @job = current_user.jobs.new(job_params)
 
     respond_to do |format|
       if @job.save
@@ -67,13 +59,12 @@ class JobsController < ApplicationController
   end
 
   private
-   
-    def set_job
-      @job = Job.find(params[:id])
-    end
 
-  
     def job_params
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remoke_ok, :apply_url, :avatar)
+    end
+
+    def set_job
+      @job = Job.find(params[:id])
     end
 end
