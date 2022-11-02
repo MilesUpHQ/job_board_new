@@ -1,47 +1,46 @@
+<%= render 'layouts/navbar' %>
+
 <div class = "form">
-<%= form_with model: [ @job, @job.applies.build ] do |f| %>
-
-
-  
+  <%= form_with model: [ @job, @job.applies.build ] do |f| %>
     <div >
-        <%= f.label "name", :class=>"lable" %>
-        <%= f.text_field :name, :class=>"input" %>
-        </div>
-    
+      <%= f.label "name", :class=>"lable" %>
+      <%= f.text_field :name, :class=>"input" %>
+    </div>
 
     <div >
-   
-        <%= f.label "phone number", :class=>"lable" %>
-        <%= f.text_field :phonenumber, :class=>"input" %>
-        </div>
+      <%= f.label "phone number", :class=>"lable" %>
+      <%= f.text_field :phonenumber, :class=>"input" %>
+    </div>
 
     <div >
-    
-        <%= f.label "Email", :class=>"lable" %>
-        <%= f.text_field :email, :class=>"input" %>
-        </div>
+      <%= f.label "Email", :class=>"lable" %>
+      <%= f.text_field :email, :class=>"input" %>
+    </div>
+
+    <div >
+      <%= f.label "Job Application", :class=>"lable" %>
+      <%= f.rich_text_area :job_application, :class=>"textarea" %>
+    </div>
 
   <div class="columns">
-      <div class="field column is-4">
-        
-          <label class="label">Upload resume</label>
-          <div class="file">
-            <label class="file-label">
-                <span class="file-cta">
-                  <span class="file-icon"><i class="fa fa-upload"></i></span>
-                  <span class="file-label">Choose a file…</span>
-                  <%= f.file_field :resume, :class=>"file-input job-avatar" %>
-                </span>
-            </label>
-          
+    <div class="field column is-4">
+      <label class="label">Upload resume</label>
+        <div class="file">
+          <label class="file-label">
+            <span class="file-cta">
+            <span class="file-icon"><i class="fa fa-upload"></i></span>
+            <span class="file-label">Choose a file…</span>
+            <%= f.file_field :resume, :class=>"file-input job-avatar" %>
+            </span>
+          </label>
         </div>
-      </div>
+    </div>
       <div class="column">
         <output id="list"></output>
       </div>
     </div>
 
-    <%= f.submit %>
+  <%= f.submit %>
   </div>
 <% end %>
 </div>

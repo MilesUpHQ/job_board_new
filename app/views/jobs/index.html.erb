@@ -1,67 +1,59 @@
+<%= render 'layouts/navbar' %>
 <section class="py-5 header">
-    <div class="container py-4">
-
-        <div class="row">
-            <div class="col-md-2 p-0">
-              <%= render 'panel' %>
-            </div>
-
-
-            <div class="col-md-10">
-
-            <div class="card">
-
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    <%= paginate @jobs %>
-                    <% if @jobs.empty? %>
-                      <h1>No Jobs Available</h1>
-                    <% else %>
-                    <% @jobs.each do |job| %>
-                    <div class="columns border-bottom">
-                      <div class="column is-1">
-                        <% if !job.avatar.file.nil? %>
-                          <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job.url %>
-                        <% end %>
-                      </div>
-                      <div class="column is-8">
-                        <h3 class="title is-4 index-title"><%= link_to job.title, job %></h3>
-                          <ul>
-                            <li><%= link_to job.job_author, job.url %></li>
-                          </ul>
-                        <div class="pv2 f6">
-                          <%= sanitize(job.description.truncate(200, separator: '</p>')) %>
-                        </div>
-
-                        <% if current_user.try(:admin) || job_author(job) %>
-                          <ul class="pv3">
-                            <li class="inline-block f6">Admin controls: </li>
-                            <li class="inline-block">
-                              <%= link_to 'View', job, class: 'button is-small is-link is-outlined' %></li>
-                            <li class="inline-block">
-                              <%= link_to 'Edit', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
-
-                            <li class="inline-block">
-                              <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
-                            <li class="inline-block">
-                              <%= link_to 'View-to-apply-job', job_applies_path(job), class: 'button is-small is-link is-outlined' %></li>
-
-                          </ul>
-                        <% end %>
-
-                        </div>
-                        <div class="column has-text-right">
-                          <%= job_type(job.job_type) %>
-                          <p class="pt2 f6"><%= job.location %></p>
-                        </div>
-                      </div>
-                    <% end %>
-                    <% end %>
-                    <%= paginate @jobs %>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-2 p-0">
+        <%= render 'panel' %>
+      </div>
+      <div class="col-md-10">
+        <div class="card">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+              <%= paginate @jobs %>
+              <% if @jobs.empty? %>
+                <h1>No Jobs Available</h1>
+              <% else %>
+                <% @jobs.each do |job| %>
+                  <div class="columns border-bottom">
+                    <div class="column is-1">
+                      <% if !job.avatar.file.nil? %>
+                        <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job.url %>
+                      <% end %>
                     </div>
-                </div>
-                </div>
+                    <div class="column is-8">
+                      <h3 class="title is-4 index-title"><%= link_to job.title, job %></h3>
+                      <ul>
+                        <li><%= link_to job.job_author, job.url %></li>
+                      </ul>
+                      <div class="pv2 f6">
+                        <%= truncate(strip_tags(job.description.body.to_s), length: 30) %>
+                      </div>
+                      <% if current_user.try(:admin) || job_author(job) %>
+                        <ul class="pv3">
+                          <li class="inline-block f6">Admin controls: </li>
+                          <li class="inline-block">
+                            <%= link_to 'View', job, class: 'button is-small is-link is-outlined' %></li>
+                          <li class="inline-block">
+                            <%= link_to 'Edit', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
+                          <li class="inline-block">
+                            <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+                          <li class="inline-block">
+                            <%= link_to 'View-to-apply-job', job_applies_path(job), class: 'button is-small is-link is-outlined' %></li>
+                        </ul>
+                      <% end %>
+                    </div>
+                    <div class="column has-text-right">
+                      <%= job_type(job.job_type) %>
+                      <p class="pt2 f6"><%= job.location %></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <%= paginate @jobs %>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>

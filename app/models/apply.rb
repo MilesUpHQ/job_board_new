@@ -2,7 +2,7 @@ class Apply < ApplicationRecord
     belongs_to :job
 
     has_one_attached :resume
-
+    has_rich_text :job_application
     validates :phonenumber, presence: true, length: {is:10}
     validates :email, presence: true
     validates :resume, presence:true
