@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Job Board</title>
+    <title>JOB BOARD</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csp_meta_tag %>
+    <%# <%= favicon_link_tag "C:\Users\Srinandhini\Pictures\book images\ps.jpg"%> 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -15,67 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Web/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
   </head>
 
-  <body class="<%= yield (:body_class) %>">
-    <% if flash[:notice] %>
-      <div class="notification is-success global-notification">
-        <p class="notice"><%= notice %></p>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-    <div class="notification is-danger global-notification">
-      <p class="alert"><%= alert %></p>
-    </div>
-    <% end %>
-
-     <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <%= link_to root_path, class:"navbar-item" do %>
-          <h1 class="title is-5">Job Board</h1>
-        <% end  %>
-        <div class="navbar-burger burger" data-target="navbar">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <div id="navbar" class="navbar-menu">
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="field is-grouped">
-            <p class="control">
-              <%= link_to 'Post Job', new_job_path, class: "navbar-item button is-primary is-rounded" %>
-            </p>
-            <% if user_signed_in? %>
-
-              <div class="navbar-item has-dropdown is-hoverable">
-                <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
-                <div class="navbar-dropdown is-right">
-                  <%= link_to current_user.username, edit_user_registration_path, class:"navbar-item" %>
-                  <%= link_to 'Home', root_path, class: "navbar-item" %>
-                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                </div>
-              </div>
-            <% else %>
-            <p class="control">
-              <%= link_to "Sign In", new_user_session_path, class:"navbar-item button" %>
-            </p>
-            <p class="control">
-              <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button"%>
-            </p>
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-
-  <%= yield %>
-
-
-    </html>
+  <body>
+    <%# <p class="notice"><%= notice %><%# </p>
+    <%# <p class="alert"><%= alert %><%# </p> %>
+    <%= yield %> 
+  </body>
+</html>
