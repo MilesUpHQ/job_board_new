@@ -10,11 +10,22 @@
       <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
       <% if @job.remoke_ok? %>
         <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
+      <li class="inline-block f6 ph2"><%= category(@job.category) %></li>  
       <% end %>
     </ul>
 
     <div class="content text-serif f4">
-      <%= @job.description %>
+     <% if @job.description.present?%>
+       <h5>Description</h5>
+       <%= @job.description %>
+      <%end%> 
+    </div>
+    
+    <div class="content text-serif f4">
+     <% if @job.perks.present?%>
+       <h5>perks</h5>
+       <%= @job.perks %>
+      <%end%> 
     </div>
 
 
