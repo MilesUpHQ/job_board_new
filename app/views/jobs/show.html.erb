@@ -27,6 +27,41 @@
        <%= @job.perks %>
       <%end%> 
     </div>
+    
+    <div class="content text-serif f4">
+     <% if @job.apply_url.present?%>
+       <h5>Attachement for jobs</h5>
+       <%= @job.apply_url %>
+      <%end%> 
+    </div>
+
+    <div class="content text-serif f4">
+     <% if @job.job_author.present?%>
+       <h5>Employer Name</h5>
+       <%= @job.job_author %>
+      <%end%> 
+    </div>
+    
+    <div class="content text-serif f4">
+     <% if @job.url.present?%>
+       <h5>Company website</h5>
+       <%= @job.url %>
+      <%end%> 
+    </div>
+
+    <div class="content text-serif f4">
+     <% if @job.email.present?%>
+       <h5>Email</h5>
+       <%= @job.email %>
+     <%end%> 
+    </div>
+
+    <div class="content text-serif f4">
+     <% if @job.twitter.present?%>
+       <h5>Twitter</h5>
+       <%= @job.twitter %>
+      <%end%> 
+    </div>
 
 
 
