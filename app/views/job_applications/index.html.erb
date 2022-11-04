@@ -1,0 +1,22 @@
+<%= render 'layouts/navbar' %>
+
+<%= link_to 'Accepted Jobs', accepted_path, class: 'button is-small is-link is-outlined' %></li>
+<%= link_to 'Rejected Jobs', rejected_path, class: 'button is-small is-link is-outlined' %></li>
+
+
+<h1>Applied Job</h1>
+<br>
+<% @job.job_applications.each do |job_application| %>
+  <h4>Name:<%= job_application.name %></h4>
+  <%# <p><%= job_application.address</p> %>
+  <h4>Phone Number:<%= job_application.phonenumber%></h4>
+  <h4>Email:<%= job_application.email%></h4>
+
+  <h4>Resume:<%= link_to "Download", rails_blob_path(job_application.resume, disposition: "attachment") %></h4>
+
+  <%= link_to 'View', job_job_application_path(@job, job_application), class: 'button is-small is-link is-outlined' %>
+  <br>
+
+
+
+<% end %>

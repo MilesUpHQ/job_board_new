@@ -1,6 +1,6 @@
 class Job < ApplicationRecord
     has_many :applies
-    
+    has_rich_text :description
     belongs_to :user
     mount_uploader :avatar, AvatarUploader
     has_one_attached :resume

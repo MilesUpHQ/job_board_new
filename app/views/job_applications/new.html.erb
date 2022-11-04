@@ -1,7 +1,7 @@
 <%= render 'layouts/navbar' %>
 
 <div class = "form">
-  <%= form_with model: [ @job, @job.applies.build ] do |f| %>
+  <%= form_with model: [ @job, @job.job_applications.build ] do |f| %>
     <div >
       <%= f.label "name", :class=>"lable" %>
       <%= f.text_field :name, :class=>"input" %>
