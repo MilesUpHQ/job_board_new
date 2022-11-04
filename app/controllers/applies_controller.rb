@@ -1,5 +1,5 @@
 class AppliesController < ApplicationController
-  before_action :set_job
+  before_action :set_job 
   before_action :authenticate_user!, only:[:index, :new, :show]
   # before_action :check_user_job, except: %i[ new create ]
   before_action :set_apply, only: %i[ show accept reject ]
@@ -54,7 +54,7 @@ class AppliesController < ApplicationController
     private
 
     def apply_params
-      params.require(:apply).permit(:name, :phonenumber,:address,:email,:resume, :status)
+      params.require(:apply).permit(:name, :phonenumber,:address,:email,:resume, :job_application, :status)
     end
 
     def set_job
