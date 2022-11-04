@@ -1,4 +1,4 @@
-class job_applicationsController < ApplicationController
+class JobApplicationsController < ApplicationController
   before_action :set_job
   before_action :authenticate_user!, only:[:index, :new, :show]
   # before_action :check_user_job, except: %i[ new create ]
