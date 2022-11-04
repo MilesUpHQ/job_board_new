@@ -1,4 +1,4 @@
-class Job_application < ApplicationRecord
+class Jobapplication < ApplicationRecord
     belongs_to :job
 
     has_one_attached :resume
