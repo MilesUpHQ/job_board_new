@@ -1,40 +1,68 @@
 <%= render 'layouts/navbar' %>
-<div class = "form">
-  <%= form_with model: [ @job, @job.applies.build ] do |f| %>
-    <div >
-      <%= f.label "name", :class=>"lable" %>
-      <%= f.text_field :name, :class=>"input" %>
-    </div>
-    <div >
-      <%= f.label "phone number", :class=>"lable" %>
-      <%= f.text_field :phonenumber, :class=>"input" %>
-    </div>
-    <div >
-      <%= f.label "Email", :class=>"lable" %>
-      <%= f.text_field :email, :class=>"input" %>
-    </div>
-    <div >
-      <%= f.label "Job Application", :class=>"lable" %>
-      <%= f.rich_text_area :job_application, :class=>"textarea" %>
-    </div>
-    <div class="columns">
-      <div class="field column is-4">
-        <label class="label">Upload resume</label>
-        <div class="file">
-          <label class="file-label">
-            <span class="file-cta">
-              <span class="file-icon"><i class="fa fa-upload"></i></span>
-              <span class="file-label">Choose a file…</span>
-              <%= f.file_field :resume, :class=>"file-input job-avatar" %>
-            </span>
-          </label>
+<br>
+ <h3><center>Fill this form to apply for this job</center></h3>     
+<%= form_with model: [ @job, @job.applies.build ] do |f| %>
+<section class="vh-500" style="background-color: white;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-8">
+      <br>
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Name</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_field :name,  :class =>"form-control form-control-lg" , :placeholder=>"Enter your name"   %>
+              </div>
+            </div>
+              <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Phone Number</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_field :phonenumber ,:class =>"form-control form-control-lg" , :placeholder=>"Enter your phone number"%>
+              </div>
+            </div>
+              <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_field :email,:class =>"form-control form-control-lg" , :placeholder=>"email@gmail.com"%>
+              </div>
+            </div>
+              <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Job Application</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_area :job_application,:class =>"form-control form-control-lg" , :placeholder=>"Enter some details about you"%>
+              </div>
+            </div>
+              <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Resume</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                 <%= f.file_field :resume,  :class=>"form-control form-control-lg" %>
+              </div>
+            </div>
+          <hr class="mx-n3">
+            <div class="px-5 py-4">
+            <%= f.button :submit, :class=>"btn btn-primary btn-lg" %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <output id="list"></output>
+        <br>
+        <br>
       </div>
     </div>
-    <%= f.submit %>
   </div>
+</section>
 <% end %>
-</div>
