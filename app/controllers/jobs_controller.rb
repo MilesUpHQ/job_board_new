@@ -58,10 +58,16 @@ class JobsController < ApplicationController
     end
   end
 
+  def company_page
+    company_name = Job.find_by(id: params[:id]).company_name
+    @jobs = Job.where(company_name: company_name)
+  end
+
+
   private
 
     def job_params
-      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remoke_ok, :apply_url, :avatar,:category,:perks,:twitter,:email,:pay)
+      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remoke_ok, :apply_url, :avatar,:category,:perks,:twitter,:email,:pay,:company_name)
     end
 
     def set_job
