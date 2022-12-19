@@ -14,7 +14,7 @@
 
   <h4>Resume:<%= link_to "Download", rails_blob_path(job_application.resume, disposition: "attachment") %></h4>
 
-  <%= link_to 'View', job_job_application_path(@job, job_application), class: 'button is-small is-link is-outlined' %>
+  <%= link_to 'View', job_job_applications_path(@job, job_application), class: 'button is-small is-link is-outlined' %>
   <br>
 
 
