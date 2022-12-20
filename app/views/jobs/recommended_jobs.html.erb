@@ -1,0 +1,30 @@
+<%= render 'layouts/navbar' %>
+<h3 class="align-center"> Recommendations based on your Prefered Locaton</h3>
+<div class="columns pt4 pb7">
+  <div class="column is-7 is-offset-1">
+    <% @recommended_jobs.each do |recommended_job| %>
+      <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(recommended_job.created_at) %> ago</p>
+      <h1 class="title is-2"><%= recommended_job.title %></h1>
+      <ul class="list pb4">
+        <li class="inline-block f6 pr2"><%= job_type(recommended_job.job_type) %></li>
+        <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= recommended_job.location %></li>
+        <% if recommended_job.remoke_ok? %>
+          <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
+        <% end %>
+      </ul>
+      <div class="content text-serif f4">
+        <%= recommended_job.description %>
+      </div>
+    </div>
+    <div class="column is-2 is-offset-1 has-text-centered">
+      <% if !recommended_job.avatar.file.nil? %>
+        <%= link_to image_tag(recommended_job.avatar_url(:thumb), alt: recommended_job.job_author, class: "has-text-centered logo"), recommended_job.url %>
+      <% end %>
+      <h5 class="is-5 has-text-centered"><%= link_to recommended_job.job_author, recommended_job.url %></h5>
+      <div class="mt2 mb4">
+        <%= link_to recommended_job.url do %>
+          <i class="fa fa-globe"></i>
+        <% end %>
+      </div>
+      <%= link_to 'Apply to this job', new_job_apply_path(recommended_job), class:"button is-rounded is-fullwidth is-link" %>
+    <% end %>
