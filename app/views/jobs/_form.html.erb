@@ -41,7 +41,7 @@
                 <h6 class="mb-0">Location</h6>
               </div>
               <div class="col-md-9 pe-5">
-              <%= f.select :location,["Select the location","Ariyalur",    "Chennai",    "Coimbatore",    "Cuddalore",    "Dharmapuri",    "Dindigul",    "Erode",    "Kanchipuram",    "Kanyakumari",    "Karur",    "Krishnagiri",    "Madurai",    "Nagapattinam",    "Namakkal",    "Nilgiris",    "Perambalur",    "Pudukkottai",    "Ramanathapuram",    "Salem",    "Sivaganga",    "Thanjavur",    "Theni",    "Thoothukudi",    "Tiruchirappalli",    "Tirunelveli",    "Tiruppur",    "Tiruvallur",    "Tiruvannamalai",    "Tiruvarur",    "Vellore",    "Viluppuram",    "Virudhunagar"],{},{:class=>"form-control form-control-lg"}%>
+              <%= f.text_field :location, :input_html =>{:id => 'gmaps-input-address'},:class=>"form-control form-control-lg", :placeholder => 'Start typing a place...'%>
               <br>
               <label><%= f.check_box :remoke_ok %> Remote Work</label>
               </div>

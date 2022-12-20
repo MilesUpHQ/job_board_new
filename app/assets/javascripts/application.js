@@ -14,7 +14,25 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery_ujs
+//= require jquery.ui.all
+//= require gmaps-autocomplete
 
 import "trix"
 import "@rails/actiontext"
+$(document).ready(function() { 
+    GmapsAutoComplete.init();
+    GmapsAutoComplete.autoCompleteInit();
+  });
+  defaultOptions = {
+    mapElem: "#gmaps-canvas", 
+    zoomLevel: 2, 
+    mapType: google.maps.MapTypeId.ROADMAP,
+    pos: [51.751724, -1.255284],
+    inputField: '#gmaps-input-address',
+    errorField: '#gmaps-error',
+    debugOn: false
+  };
+  autoCompleteInit({region: 'Asia', country: 'India'});
+  
 

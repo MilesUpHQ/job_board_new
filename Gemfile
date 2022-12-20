@@ -68,6 +68,9 @@ gem 'gravatar_image_tag'
 gem'trix'
 gem 'binding_of_caller'
 gem 'figaro'
+gem 'gmaps-autocomplete-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 
 group :development, :test do
