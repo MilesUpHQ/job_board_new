@@ -22,6 +22,10 @@ class JobsController < ApplicationController
   def show
   end
 
+  def recommended_jobs
+    @recommended_jobs= Job.where(location: current_user.prefered_location)
+  end
+
   def create
     @job = current_user.jobs.new(job_params)
 
