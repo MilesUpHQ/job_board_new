@@ -4,21 +4,74 @@
 
     <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
     <h1 class="title is-2"><%= @job.title %></h1>
+    <div class="content text-serif f4">
+     <% if @job.company_name.present?%>
+       <h5>companyname</h5>
+       <%= @job.company_name %>
+      <%end%> 
+    </div>
 
     <ul class="list pb4">
       <li class="inline-block f6 pr2"><%= job_type(@job.job_type) %></li>
       <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
       <% if @job.remoke_ok? %>
         <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
+      <li class="inline-block f6 ph2"><%= category(@job.category) %></li>  
       <% end %>
     </ul>
 
     <div class="content text-serif f4">
-      <%= @job.description %>
+     <% if @job.description.present?%>
+       <h5>Description</h5>
+       <%= @job.description %>
+      <%end%> 
+    </div>
+    
+    <div class="content text-serif f4">
+     <% if @job.perks.present?%>
+       <h5>perks</h5>
+       <%= @job.perks %>
+      <%end%> 
+    </div>
+    
+    <div class="content text-serif f4">
+     <% if @job.apply_url.present?%>
+       <h5>Attachement for jobs</h5>
+       <%= @job.apply_url %>
+      <%end%> 
+    </div>
+
+    <div class="content text-serif f4">
+     <% if @job.job_author.present?%>
+       <h5>Employer Name</h5>
+       <%= @job.job_author %>
+      <%end%> 
+    </div>
+    
+    <div class="content text-serif f4">
+     <% if @job.url.present?%>
+       <h5>Company website</h5>
+       <%= @job.url %>
+      <%end%> 
+    </div>
+
+    <div class="content text-serif f4">
+     <% if @job.email.present?%>
+       <h5>Email</h5>
+       <%= @job.email %>
+     <%end%> 
+    </div>
+
+    <div class="content text-serif f4">
+     <% if @job.twitter.present?%>
+       <h5>Twitter</h5>
+       <%= @job.twitter %>
+      <%end%> 
     </div>
 
 
-
+<li class="pv1 inline-block">
+      <%= link_to 'Jobs posted by company',jobs_company_page_path(:id => @job.id),class:"button is-rounded is-fullwidth is-link" %></li>
   </div>
 
   <div class="column is-2 is-offset-1 has-text-centered">
@@ -35,7 +88,7 @@
     <% end %>
     </div>
 
-    <%= link_to 'Apply to this job', new_job_apply_path(@job), class:"button is-rounded is-fullwidth is-link" %>
+    <%= link_to 'Apply to this job', new_job_job_application_path(@job), class:"button is-rounded is-fullwidth is-link" %>
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
@@ -46,6 +99,8 @@
         <li class="pv1 inline-block">
           <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
 
+     
+      
       </ul>
     <% end %>
 

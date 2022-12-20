@@ -1,97 +1,106 @@
-
-
-
-     <%= simple_form_for @job, html: { multipart: true } do |f| %>
-      <%= f.error_notification %>
-
-      <div class="field">
-        <div class="control">
-        <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Frontend Developer" %>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="control">
-          <%= f.input :apply_url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }  %>
-          <%# <%= render 'apply', job: @job %>
-        </div>
-      </div>
-
-
-    <div class="columns">
-      <div class="field column is-4">
-        <div class="control">
-          <label class="label">Job Type:</label>
-          <div class="control has-icons-left">
-            <span class="select">
-              <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
-            </span>
-            <span class="icon is-small is-left">
-              <i class="fa fa-briefcase"></i>
-            </span>
+<%= form_with model: @job ,html: { multipart: true } do |f| %>
+<section class="vh-800" style="background-color: #2779E2;">
+  <div class="container h-1000">
+    <div class="row d-flex justify-content-center align-items-center h-1000">
+      <div class="col-xl-10">
+      <br>
+        <h1 class="text-white mb-4">Tell us about the position</h1>
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Headline</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_field :title,  :class =>"form-control form-control-lg" , :placeholder=>"One line about Job Role"   %>
+              </div>
+            </div>
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Comapny Name</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_area :company_name , :class =>"form-control form-control-lg" , :placeholder=>"Name of the company"%>
+              </div>
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Job Type</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.select :job_type,["Select the job type","Full-time employment", "Part-time", "short-timeContract", "Freelance", "Internship","Volunteer contribution","Partner for a venture"],{},{:class=>"form-control form-control-lg"}%>
+              </div>
+            </div>
+             <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Job Category</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.select :category,["Select the job category","Programming","Interaction Design", "Graphic Design","Information Security",
+                 "Testing/Quality Assurance","IT/System Administration","Business/Management",
+                "Writer/Editor","Customer Support","Office Administation"],{},{:class=>"form-control form-control-lg"}%>
+              </div>
+            </div>
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Location</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.select :location,["Select the location","Ariyalur",    "Chennai",    "Coimbatore",    "Cuddalore",    "Dharmapuri",    "Dindigul",    "Erode",    "Kanchipuram",    "Kanyakumari",    "Karur",    "Krishnagiri",    "Madurai",    "Nagapattinam",    "Namakkal",    "Nilgiris",    "Perambalur",    "Pudukkottai",    "Ramanathapuram",    "Salem",    "Sivaganga",    "Thanjavur",    "Theni",    "Thoothukudi",    "Tiruchirappalli",    "Tirunelveli",    "Tiruppur",    "Tiruvallur",    "Tiruvannamalai",    "Tiruvarur",    "Vellore",    "Viluppuram",    "Virudhunagar"],{},{:class=>"form-control form-control-lg"}%>
+              <br>
+              <label><%= f.check_box :remoke_ok %> Remote Work</label>
+              </div>
+            </div>
+             <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Description</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.rich_text_area :description ,:class =>"form-control form-control-lg" , :placeholder=>"Tell about the job in detail"%>
+              </div>
+            </div>
+              <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Perks</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_area :perks , :class =>"form-control form-control-lg" , :placeholder=>"Tell about the perks of your company"%>
+              </div>
+            </div>
+              <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Pay</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+               <%= f.radio_button :pay, 'Nothing' %> Nothing
+               <%= f.radio_button :pay, 'One-time' %> One-time
+               <%= f.radio_button :pay, 'Recuring' %> Recuring
+              </div>
+            </div>
+             <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">Requirements</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+              <%= f.text_area :apply_url ,as: :rich_text_area, :class =>"form-control form-control-lg" , :placeholder=>"Documents from candidate while applying this job"%>
+              </div>
+            </div>
+          
           </div>
         </div>
-      </div>
-
-      <div class="column">
-        <div class="field">
-          <div class="control">
-         <label class="label">Location :</label>
-            <%= f.select :location, ["Ariyalur","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Salem","Sivaganga","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"],require: true, input_html: { class: "dropdown" }, wrapper: false, label_html: { class: "label" }   %>
-          </div>
-        </div>
-
-
-        <div class="field">
-          <div class="control">
-            <label for="job[remoke_ok]">
-              <%= f.input :remoke_ok, required: false, input_html: { class: "checkbox"}, wrapper: false, label: false %>
-              Remote work
-            </label><i class="fa fa-wifi"></i>
-          </div>
-        </div>
+        <br>
+        <br>
       </div>
     </div>
+  </div>
+</section>
 
-      <div class="field">
-        <div class="control">
-          <%= f.input :description,as: :rich_text_area, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
-        </div>
-      </div>
-
-
-    <div class="columns">
-      <div class="field column">
-
-        <div class="control">
-          <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
-        </div>
-      </div>
-
-      <div class="field column">
-        <div class="control">
-          <%= f.input :url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company Website", placeholder: "http://company.com" %>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="columns">
-      <div class="field column is-4">
-        <div class="control">
-          <label class="label">Logo Image</label>
-          <div class="file">
-            <span class="file-icon"><i class="fa fa-upload"></i></span>
-               <%= f.file_field :avatar, as: :file, required: false, input_html: { class:"file-input job-avatar" }, label: false, wrapper: false %>
-                               </span>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <output id="list"></output>
-      </div>
-    </div>
-
-   <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
+<%= render "organisation"%>
+ 
 <% end %>

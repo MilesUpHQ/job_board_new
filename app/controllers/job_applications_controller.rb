@@ -1,4 +1,4 @@
-class AppliesController < ApplicationController
+class JobApplicationsController < ApplicationController
   before_action :set_job
   before_action :authenticate_user!, only:[:index, :new, :show]
   # before_action :check_user_job, except: %i[ new create ]
@@ -8,12 +8,12 @@ class AppliesController < ApplicationController
   end
 
   def new
-    @apply = @job.applies.new()
+    @job_application = @job.job_applications.new()
   end
 
     def create
-      @apply = @job.applies.new(apply_params)
-      if @apply.save
+      @job_application = @job.job_applications.new(apply_params)
+      if job_application
         redirect_to jobs_path,flash: {notice: "JOB IS APPLIED SUCCESSFULLY"}
       else 
         render 'new'
@@ -24,28 +24,28 @@ class AppliesController < ApplicationController
     end
 
     def accepted
-      @applies = @job.applies.filter_by_accept
+      @job_applications = @job.job_applications.filter_by_accept
     end
 
     def rejected
-      @applies = @job.applies.filter_by_reject
+      @job_applications = @job.job_applications.filter_by_reject
     end
 
     def reject
-      @apply.status = "reject"
-      if @apply.save
+     job_applications = "reject"
+      if job_application
         respond_to do |format|
-          format.html { redirect_to job_applies_path, notice: "The application is rejected" }
+          format.html { redirect_to job_job_applications_path, notice: "The application is rejected" }
           format.json { head :no_content }
         end
       end
     end
 
     def accept
-      @apply.status = "accept"
-      if @apply.save
+     job_applications = "accept"
+      if job_application
         respond_to do |format|
-          format.html { redirect_to job_applies_path, notice: "The application is accepted" }
+          format.html { redirect_to job_job_applications_path, notice: "The application is accepted" }
           format.json { head :no_content }
         end
       end
@@ -62,6 +62,6 @@ class AppliesController < ApplicationController
     end
 
     def set_apply
-      @apply =  @job.applies.find(params[:id])
+     job_application job.job_applications.find(params[:id])
     end
 end

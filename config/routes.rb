@@ -8,15 +8,18 @@ Rails.application.routes.draw do
    match "/404", to: "errors#not_found", via: :all
    match "/500", to: "errors#internal_server_error", via: :all
 
-   get '/jobs/:job_id/applies/rejected', to: 'applies#rejected', as: 'rejected'
-   get '/jobs/:job_id/applies/accepted', to: 'applies#accepted', as: 'accepted'
-
+  get "jobs/company_page"
   resources :jobs do
-    resources :applies
+    resources :job_applications do
+      collection do
+      post 'accept'
+      post 'reject'
+      get 'accepted'
+      get 'rejected'
   end
-   post '/jobs/:job_id/applies/:id/accept', to: 'applies#accept', as: 'accept'
-   post '/jobs/:job_id/applies/:id/reject', to: 'applies#reject', as: 'reject'
-
+end
+end
+ 
 
   root to: 'jobs#index'
 
