@@ -1,12 +1,14 @@
 <section class="" style="  background-color: #dddddd;">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cccccc" >
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%= link_to root_path, class:"navbar-item" do %>
-        <h1 class="title is-5">Job Board</h1>
-      <% end  %>
+    <div class="navbar-brand">
+    <%= link_to root_path, class:"navbar-item" do %>
+      <%=image_tag 'JobBoard image.png', :class=>"logo" %>
+        <% end %>
+    </div>
     </div>
     <div class="navbar-text float-right">
       <ul class="navbar-nav mr-auto">
@@ -14,7 +16,9 @@
         <% if user_signed_in? %>
           <div class="navbar-item has-dropdown is-hoverable">
             <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
-            <div class="navbar-dropdown is-right">
+            <div class="navbar-dropdown is-right" data-toggle="dropdown" role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false">
               <%= link_to current_user.username, edit_user_registration_path, class:"navbar-item" %>
               <%= link_to 'Home', root_path, class: "navbar-item" %>
               <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
@@ -30,5 +34,55 @@
         <% end %>
       </ul>
     </div>
+  </nav>
+</section>
+
+
+<section class="" style="  background-color: #dddddd;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+   <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Location
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Chennai</a>
+          <a class="dropdown-item" href="#">Bangalore</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Others</a>
+        </div>
+      </li>
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Job Type
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Full Time Employment</a>
+          <a class="dropdown-item" href="#">Internship</a>
+          <a class="dropdown-item" href="#">Freelance</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Others</a>
+        </div>
+      </li>
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Job Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Programming</a>
+          <a class="dropdown-item" href="#">Graphic Design</a>
+          <a class="dropdown-item" href="#">Testing</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Others</a>
+        </div>
+      </li>
+      </ul>
+      </div>
+     <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
   </nav>
 </section>
