@@ -12,6 +12,7 @@
     </div>
     <div class="navbar-text float-right">
       <ul class="navbar-nav mr-auto">
+        <%= link_to 'Recommended Job', jobs_recommended_jobs_path, class: "navbar-item button is-primary is-rounded" %>
         <%= link_to 'Post Job', new_job_path, class: "navbar-item button is-primary is-rounded" %>
         <% if user_signed_in? %>
           <div class="navbar-item has-dropdown is-hoverable">
